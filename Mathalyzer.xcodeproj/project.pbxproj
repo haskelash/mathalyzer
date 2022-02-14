@@ -85,8 +85,8 @@
 		8B84898A27BAA4F600D376F1 /* Arithmetic Engine */ = {
 			isa = PBXGroup;
 			children = (
-				8B84898B27BAA50700D376F1 /* Pemdas.swift */,
 				8B84899127BAA55200D376F1 /* Enums.swift */,
+				8B84898B27BAA50700D376F1 /* Pemdas.swift */,
 				8B84898D27BAA51A00D376F1 /* Parentheses.swift */,
 				8B84898F27BAA53000D376F1 /* StringParser.swift */,
 			);
