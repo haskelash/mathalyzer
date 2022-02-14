@@ -21,6 +21,7 @@ struct ContentView: View {
   var body: some View {
     NavigationView {
       VStack {
+        Divider()
         HStack {
           TextField("Type some math...", text: $input)
           NavigationLink {
@@ -31,15 +32,14 @@ struct ContentView: View {
             Text("Compute")
           }.disabled(input.isEmpty)
         }.padding([.leading, .trailing])
-        Spacer()
-        Spacer()
+        Divider()
+        HStack {
+          Text("Previous results")
+          Spacer()
+        }.padding()
         List {
           ForEach(items) { item in
-            NavigationLink {
-              Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-            } label: {
-              Text(item.timestamp!, formatter: itemFormatter)
-            }
+            Text(item.answer!)
           }
           .onDelete(perform: deleteItems)
         }
@@ -47,27 +47,8 @@ struct ContentView: View {
           ToolbarItem(placement: .navigationBarTrailing) {
             EditButton()
           }
-          ToolbarItem {
-            Button(action: addItem) {
-              Label("Add Item", systemImage: "plus")
-            }
-          }
         }
-      }
-    }
-  }
-
-  private func addItem() {
-    withAnimation {
-      let newItem = Item(context: viewContext)
-      newItem.timestamp = Date()
-
-      do {
-        try viewContext.save()
-      } catch {
-        let nsError = error as NSError
-        fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-      }
+      }.navigationTitle("Mathalyzer")
     }
   }
 
@@ -84,50 +65,6 @@ struct ContentView: View {
     }
   }
 }
-
-struct AnswerView: View {
-  let expression: String
-
-  var body: some View {
-    Text(compute())
-  }
-
-  func compute() -> String {
-    do {
-      let answer = try evaluate(expression)
-      let output = "\(expression) = \(answer)"
-      return output
-    } catch ParsingError.invalidCharacter(let index) {
-      return error("Invalid character: ", expression, index)
-    } catch ParsingError.closeWithoutOpen(let index) {
-      return error("Missing open parentheses: ", expression, index)
-    } catch ParsingError.openWithoutClose(let index) {
-      return error("Missing close parentheses: ", expression, index)
-    } catch ParsingError.emptyParentheses(let index) {
-      return error("Empty parentheses: ", expression, index)
-    } catch ParsingError.expectedSymbol(let index) {
-      return error("Expected a symbol: ", expression, index)
-    } catch ParsingError.expectedNumber(let index) {
-      return error("Expected a number: ", expression, index)
-    } catch {
-      fatalError("This is impossible.")
-    }
-  }
-
-  private func error(_ errorString: String, _ expression: String, _ index: Int) -> String {
-    var emphasized = expression
-    emphasized.insert("`", at: emphasized.index(emphasized.startIndex, offsetBy: index))
-    emphasized.insert("`", at: emphasized.index(emphasized.startIndex, offsetBy: index + 2))
-    return "\(errorString)\(emphasized)"
-  }
-}
-
-fileprivate let itemFormatter: DateFormatter = {
-  let formatter = DateFormatter()
-  formatter.dateStyle = .short
-  formatter.timeStyle = .medium
-  return formatter
-}()
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
