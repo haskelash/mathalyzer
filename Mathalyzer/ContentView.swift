@@ -49,7 +49,7 @@ struct ContentView: View {
           }
         }
       }.navigationTitle("Mathalyzer")
-    }
+    }.navigationViewStyle(.stack)
   }
 
   private func deleteItems(offsets: IndexSet) {
