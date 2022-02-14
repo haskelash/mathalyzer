@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B5B0E9E27BADA3000F42335 /* ShakeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B5B0E9D27BADA3000F42335 /* ShakeModifier.swift */; };
 		8B84897827BAA4AD00D376F1 /* MathalyzerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84897727BAA4AD00D376F1 /* MathalyzerApp.swift */; };
 		8B84897A27BAA4AD00D376F1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B84897927BAA4AD00D376F1 /* ContentView.swift */; };
 		8B84897C27BAA4B100D376F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B84897B27BAA4B100D376F1 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8B5B0E9D27BADA3000F42335 /* ShakeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShakeModifier.swift; sourceTree = "<group>"; };
 		8B84897427BAA4AD00D376F1 /* Mathalyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mathalyzer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B84897727BAA4AD00D376F1 /* MathalyzerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathalyzerApp.swift; sourceTree = "<group>"; };
 		8B84897927BAA4AD00D376F1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				8B84898A27BAA4F600D376F1 /* Arithmetic Engine */,
 				8B84897727BAA4AD00D376F1 /* MathalyzerApp.swift */,
 				8B84897927BAA4AD00D376F1 /* ContentView.swift */,
+				8B5B0E9D27BADA3000F42335 /* ShakeModifier.swift */,
 				8B84899527BAD0BD00D376F1 /* AnswerView.swift */,
 				8B84897B27BAA4B100D376F1 /* Assets.xcassets */,
 				8B84898027BAA4B100D376F1 /* Persistence.swift */,
@@ -175,6 +178,7 @@
 				8B84897827BAA4AD00D376F1 /* MathalyzerApp.swift in Sources */,
 				8B84899227BAA55200D376F1 /* Enums.swift in Sources */,
 				8B84898C27BAA50700D376F1 /* Pemdas.swift in Sources */,
+				8B5B0E9E27BADA3000F42335 /* ShakeModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

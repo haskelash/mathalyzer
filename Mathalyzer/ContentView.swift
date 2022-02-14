@@ -18,19 +18,20 @@ struct ContentView: View {
 
   @State private var input = ""
 
+  @State private var shook = false
+
   var body: some View {
     NavigationView {
       VStack {
         Divider()
         HStack {
           TextField("Type some math...", text: $input)
-          NavigationLink {
+          NavigationLink(isActive: $shook, destination: {
             AnswerView(expression: input
                         .components(separatedBy: .whitespacesAndNewlines)
                         .joined(separator: ""))
-          } label: {
-            Text("Compute")
-          }.disabled(input.isEmpty)
+          }, label: { Text("Shake to compute") })
+            .disabled(input.isEmpty)
         }.padding([.leading, .trailing])
         Divider()
         HStack {
@@ -49,7 +50,13 @@ struct ContentView: View {
           }
         }
       }.navigationTitle("Mathalyzer")
-    }.navigationViewStyle(.stack)
+    }
+    .navigationViewStyle(.stack)
+    .onShake{
+      if !input.isEmpty {
+        shook = true
+      }
+    }
   }
 
   private func deleteItems(offsets: IndexSet) {
